@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+
+import Navbar from "./components/Navbar/Navbar";
+import PlanetData from "./components/PlanetData/PlanetData";
+import PlanetImage from "./components/PlanetImage/PlanetImage";
+import PlanetInfos from "./components/PlanetInfos/PlanetInfos";
+import PlanetMenu from "./components/PlanetMenu/PlanetMenu";
+
+import backgroundStars from "./assets/background-stars.svg";
+import data from "./static/data.json";
 
 function App() {
+  const [planet, setPlanet] = useState(() =>
+    data.find((planet) => planet.name === "Earth")
+  );
+  const [planetImg, setPlanetImg] = useState(() => planet.images.planet);
+
+  useEffect(() => {
+    setPlanetImg(planet.images.planet);
+  }, [planet]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ backgroundImage: `url(${backgroundStars})` }}>
+      <Navbar planets={data} setPlanet={setPlanet} />
+      <PlanetImage planet={planetImg} />
+      <PlanetData planet={planet} />
+      <PlanetMenu planet={planet.images} setPlanetImg={setPlanetImg} />
+      <PlanetInfos planet={planet} />
     </div>
   );
 }
