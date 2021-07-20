@@ -4,17 +4,32 @@ const PlanetMenu = ({ planet, setPlanetImg }) => {
   return (
     <ul>
       <li>
-        <a href="#/" onClick={() => setPlanetImg(planet.planet)}>
+        <a
+          href="#/"
+          onClick={() =>
+            setPlanetImg((prevState) => ({ ...prevState, type: "planet" }))
+          }
+        >
           OVERVIEW
         </a>
       </li>
       <li>
-        <a href="#/" onClick={() => setPlanetImg(planet.internal)}>
+        <a
+          href="#/"
+          onClick={() =>
+            setPlanetImg((prevState) => ({ ...prevState, type: "internal" }))
+          }
+        >
           INTERNAL STRUCTURE
         </a>
       </li>
       <li>
-        <a href="#/" onClick={() => setPlanetImg(planet.geology)}>
+        <a
+          href="#/"
+          onClick={() =>
+            setPlanetImg((prevState) => ({ ...prevState, type: "geology" }))
+          }
+        >
           SURFACE GEOLOGY
         </a>
       </li>

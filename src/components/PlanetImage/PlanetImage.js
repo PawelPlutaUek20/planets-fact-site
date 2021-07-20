@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 const importAll = (require) =>
   require.keys().reduce((acc, next) => {
@@ -11,7 +11,45 @@ const images = importAll(
 );
 
 const PlanetImage = ({ planet }) => {
-  return <img alt="earth" src={images[planet].default} />;
+  const refPlanet = useRef(planet);
+  refPlanet.current = planet;
+
+  switch (planet.type) {
+    case "planet":
+      return (
+        <img
+          alt="earth"
+          src={images[refPlanet.current.images.planet].default}
+        />
+      );
+    case "internal":
+      return (
+        <img
+          alt="earth"
+          src={images[refPlanet.current.images.internal].default}
+        />
+      );
+    case "geology":
+      return (
+        <>
+          <img
+            alt="earth"
+            src={images[refPlanet.current.images.geology].default}
+          />
+          <img
+            alt="earth"
+            src={images[refPlanet.current.images.planet].default}
+          />
+        </>
+      );
+    default:
+      return (
+        <img
+          alt="earth"
+          src={images[refPlanet.current.images.planet].default}
+        />
+      );
+  }
 };
 
 export default PlanetImage;

@@ -13,10 +13,13 @@ function App() {
   const [planet, setPlanet] = useState(() =>
     data.find((planet) => planet.name === "Earth")
   );
-  const [planetImg, setPlanetImg] = useState(() => planet.images.planet);
+  const [planetImg, setPlanetImg] = useState({
+    type: "planet",
+    images: planet.images,
+  });
 
   useEffect(() => {
-    setPlanetImg(planet.images.planet);
+    setPlanetImg(prevState => ({ ...prevState, images: planet.images}));
   }, [planet]);
 
   return (
