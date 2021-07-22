@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Zoom } from "@material-ui/core";
 import React, { useRef } from "react";
 
 const importAll = (require) =>
@@ -51,11 +51,13 @@ const PlanetImage = ({ planet }) => {
     case "geology":
       return (
         <>
-          <img
-            className={classes.geology}
-            alt="earth"
-            src={images[refPlanet.current.images.geology].default}
-          />
+          <Zoom in={true}>
+            <img
+              className={classes.geology}
+              alt="earth"
+              src={images[refPlanet.current.images.geology].default}
+            />
+          </Zoom>
           <img
             className={`${classes.planet} ${classes.img}`}
             alt="earth"
