@@ -1,3 +1,4 @@
+import { Container, Grid } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import Navbar from "./components/Navbar/Navbar";
@@ -6,7 +7,6 @@ import PlanetImage from "./components/PlanetImage/PlanetImage";
 import PlanetInfos from "./components/PlanetInfos/PlanetInfos";
 import PlanetMenu from "./components/PlanetMenu/PlanetMenu";
 
-import backgroundStars from "./assets/background-stars.svg";
 import data from "./static/data.json";
 
 function App() {
@@ -19,16 +19,65 @@ function App() {
   });
 
   useEffect(() => {
-    setPlanetImg(prevState => ({ ...prevState, images: planet.images}));
+    setPlanetImg((prevState) => ({ ...prevState, images: planet.images }));
   }, [planet]);
 
   return (
-    <div style={{ backgroundImage: `url(${backgroundStars})` }}>
+    <div style={{ minHeight: "100vh" }}>
       <Navbar planets={data} setPlanet={setPlanet} />
-      <PlanetImage planet={planetImg} />
-      <PlanetData planet={planet} />
-      <PlanetMenu planet={planet.images} setPlanetImg={setPlanetImg} />
-      <PlanetInfos planet={planet} />
+      <Container
+        maxWidth="lg"
+        style={{
+          display: "flex",
+          alignContent: "center",
+          minHeight: "calc(100vh - 76.66px)",
+        }}
+      >
+        <Grid container>
+          <Grid
+            item
+            container
+            xs={12}
+            sm={12}
+            md={8}
+            alignContent="center"
+            justifyContent="center"
+            style={{ position: "relative" }}
+          >
+            <PlanetImage planet={planetImg} />
+          </Grid>
+          <Grid item container xs={12} sm={12} md={4}>
+            <Grid item md={12} sm={6} xs={12}>
+              <PlanetData planet={planet} planetImg={planetImg.type} />
+            </Grid>
+            <Grid
+              item
+              container
+              md={12}
+              sm={6}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <PlanetMenu
+                setPlanetImg={setPlanetImg}
+                planetImg={planetImg.type}
+                planet={planet.name}
+              />
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            xs={12}
+            sm={12}
+            md={12}
+            justifyContent="center"
+            style={{ maxHeight: "fit-content" }}
+          >
+            <PlanetInfos planet={planet} />
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }
