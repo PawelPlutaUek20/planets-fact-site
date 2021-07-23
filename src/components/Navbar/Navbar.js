@@ -11,6 +11,7 @@ import {
   ListItemText,
   ListItemIcon,
   ListItemSecondaryAction,
+  Typography,
 } from "@material-ui/core";
 import { useStyles } from "./styles.js";
 import Tabs from "@material-ui/core/Tabs";
@@ -40,7 +41,13 @@ const Navbar = ({ planets, setPlanet }) => {
         <Toolbar>
           <Grid item container alignItems="center" className={classes.menu}>
             <Grid item>
-              <h2 className={classes.title}>THE PLANETS</h2>
+              <Typography
+                variant="h2"
+                component="h2"
+                classes={{ h2: classes.title }}
+              >
+                THE PLANETS
+              </Typography>
             </Grid>
             <Grid item container className={classes.planets}>
               <Tabs

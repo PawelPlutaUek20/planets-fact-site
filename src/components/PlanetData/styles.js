@@ -3,12 +3,14 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   [theme.breakpoints.up("md")]: {
     title: {
-      fontSize: 80,
+      fontSize: "6.15rem",
       margin: "53px 0px 13px 0px",
     },
     description: {
       fontSize: "0.83rem",
       minHeight: 129,
+      marginTop: 13.28,
+      marginBottom: 13.28,
     },
     source: {
       fontSize: "0.83rem",
@@ -16,12 +18,14 @@ const useStyles = makeStyles((theme) => ({
   },
   [theme.breakpoints.only("sm")]: {
     title: {
-      fontSize: 50,
+      fontSize: "3.85rem",
       margin: 0,
     },
     description: {
       fontSize: "0.66rem",
       minHeight: 110,
+      marginTop: 10.56,
+      marginBottom: 10.56,
     },
     source: {
       fontSize: "0.66rem",
@@ -32,20 +36,24 @@ const useStyles = makeStyles((theme) => ({
     title: {
       marginBottom: 14,
       marginTop: 53,
-      fontSize: "3rem",
+      fontSize: "3.65rem",
       textAlign: "center",
     },
     description: {
       textAlign: "center",
       fontSize: "0.8rem",
       minHeight: 126,
+      marginTop: 12.8,
+      marginBottom: 12.8,
     },
     source: {
       textAlign: "center",
       fontSize: "0.8rem",
     },
   },
-
+  title: {
+    fontFamily: "Antonio",
+  },
   description: {
     fontFamily: "Spartan, sans-serif",
     color: "rgba(255,255,255,0.75)",
@@ -61,9 +69,6 @@ const useStyles = makeStyles((theme) => ({
   },
   data: {
     minHeight: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
   },
 }));
 

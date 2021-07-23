@@ -33,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  title: {
+    fontFamily: "Antonio",
+    fontSize: "1.83rem",
+    fontWeight: "normal",
+    marginTop: 20.335,
+    marginBottom: 20.335,
+  },
   planet: {
     fontSize: "0.7rem !important",
     letterSpacing: "0.1em !important",

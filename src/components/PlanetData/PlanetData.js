@@ -1,5 +1,6 @@
 import { useStyles } from "./styles.js";
 import React from "react";
+import { Grid, Typography } from "@material-ui/core";
 
 const PlanetData = ({ planet, planetImg }) => {
   const classes = useStyles();
@@ -13,9 +14,18 @@ const PlanetData = ({ planet, planetImg }) => {
       : "planet";
 
   return (
-    <div className={classes.data}>
-      <h1 className={classes.title}>{planet.name}</h1>
-      <p className={classes.description}>{planet[data].content}</p>
+    <Grid
+      container
+      direction="column"
+      justifyContent="space-evenly"
+      className={classes.data}
+    >
+      <Typography component="h1" variant="h1" classes={{ h1: classes.title }}>
+        {planet.name}
+      </Typography>
+      <Typography variant="body1" classes={{ body1: classes.description }}>
+        {planet[data].content}
+      </Typography>
       <p className={classes.source}>
         Source: &nbsp;
         <a
@@ -27,7 +37,7 @@ const PlanetData = ({ planet, planetImg }) => {
           Wikipedia
         </a>
       </p>
-    </div>
+    </Grid>
   );
 };
 
