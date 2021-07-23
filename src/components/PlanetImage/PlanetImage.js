@@ -1,4 +1,5 @@
-import { makeStyles, Zoom } from "@material-ui/core";
+import { Zoom } from "@material-ui/core";
+import { useStyles } from "./styles.js";
 import React, { useRef } from "react";
 
 const importAll = (require) =>
@@ -11,21 +12,6 @@ const images = importAll(
   require.context("../../assets", false, /\.(png|jpe?g|svg)$/)
 );
 
-const useStyles = makeStyles((theme) => ({
-  img: {
-    maxWidth: "60%",
-  },
-  geology: {
-    position: "absolute",
-    zIndex: 1,
-    width: "12rem",
-    top: "55%",
-  },
-  planet: {
-    position: "relative",
-  },
-}));
-
 const PlanetImage = ({ planet }) => {
   const classes = useStyles();
   const refPlanet = useRef(planet);
@@ -36,7 +22,7 @@ const PlanetImage = ({ planet }) => {
       return (
         <img
           className={classes.img}
-          alt="earth"
+          alt="planet"
           src={images[refPlanet.current.images.planet].default}
         />
       );
@@ -44,7 +30,7 @@ const PlanetImage = ({ planet }) => {
       return (
         <img
           className={classes.img}
-          alt="earth"
+          alt="internal"
           src={images[refPlanet.current.images.internal].default}
         />
       );
@@ -54,13 +40,13 @@ const PlanetImage = ({ planet }) => {
           <Zoom in={true}>
             <img
               className={classes.geology}
-              alt="earth"
+              alt="geology"
               src={images[refPlanet.current.images.geology].default}
             />
           </Zoom>
           <img
             className={`${classes.planet} ${classes.img}`}
-            alt="earth"
+            alt="geology"
             src={images[refPlanet.current.images.planet].default}
           />
         </>
@@ -68,7 +54,7 @@ const PlanetImage = ({ planet }) => {
     default:
       return (
         <img
-          alt="earth"
+          alt="planet"
           src={images[refPlanet.current.images.planet].default}
         />
       );
